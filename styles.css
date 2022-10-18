@@ -6,3 +6,69 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+
+body {
+  background: #001935;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 265px);
+  gap: 15px;
+  margin: 50px;
+}
+
+.container li {
+  background: #ffffff;
+  padding: 15px 20px 20px;
+  height: 250px;
+  border-radius: 2px;
+  list-style: none;
+}
+
+.container .section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.add-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.add-section .icon {
+  font-weight: 600;
+}
+
+.section p {
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.section span {
+  display: block;
+  margin-top: 5px;
+  color: #444;
+  font-size: 16px;
+}
+
+.section .sub-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sub-section span {
+  color: #444;
+  font-size: 14px;
+}
+
+.sub-section .action-buttons i {
+  color: #444;
+  font-size: 15px;
+  cursor: pointer;
+}
