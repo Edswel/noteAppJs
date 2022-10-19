@@ -17,8 +17,8 @@ addSection.addEventListener("click", () => {
 
 // Show notes from local storage
 function getNotes() {
-  document.querySelectorAll(".note").forEach((note) => note.remove());
-  notes.forEach((note) => {
+  document.querySelectorAll(".section").forEach((section) => section.remove());
+  notes.forEach((note, index) => {
     let noteList = `
     <li class="section">
       <div class="contents">
@@ -28,8 +28,10 @@ function getNotes() {
       <div class="sub-section">
         <span>${note.date}</span>
         <div class="action-buttons">
-          <i class="fas fa-edit"></i>
-          <i class="fas fa-trash"></i>
+          <ul>
+            <i class="fas fa-edit"></i>
+            <i onclick="deleteNote(${index})" class="fas fa-trash"></i>
+          </ul>
         </div>
       </div>
     </li>
@@ -39,8 +41,17 @@ function getNotes() {
 }
 getNotes();
 
-// Remove close to close form
+function deleteNote(noteId) {
+  console.log(noteId);
+  notes.splice(noteId, 1);
+  localStorage.setItem("notes", JSON.stringify(notes));
+  getNotes();
+}
+
+// Remove class to close form
 closeIcon.addEventListener("click", () => {
+  noteTitle.value = '';
+  noteBody.value = '';
   addNew.classList.remove("show");
 });
 
@@ -64,6 +75,7 @@ addBtn.addEventListener("click", (e) => {
     }
 
     notes.push(newNote);
+    // Persist notes to local storage
     localStorage.setItem("notes", JSON.stringify(notes));
     closeIcon.click();
     getNotes();
