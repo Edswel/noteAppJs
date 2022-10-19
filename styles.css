@@ -100,6 +100,13 @@ header,
 .add-new .add-form {
   opacity: 0;
   pointer-events: none;
+  transition: all 0.25s ease;
+}
+
+.add-new.show,
+.add-new .add-form {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .add-new .content {
