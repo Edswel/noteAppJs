@@ -7,6 +7,9 @@ const addBtn = addNew.querySelector('button');
 
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
+// Get notes from local storage
+const notes = JSON.parse(localStorage.getItem("notes") || []);
+
 // Add class to show form
 addSection.addEventListener("click", () => {
   addNew.classList.add("show");
@@ -29,11 +32,14 @@ addBtn.addEventListener("click", (e) => {
     let day = newDate.getDate();
     let year = newDate.getFullYear();
 
+    // New note object
     let newNote = {
       title: newTitle,
       body: newBody,
       date: `${month} ${day}, ${year}`
     }
-    console.log(newNote);
+
+    notes.push(newNote);
+    localStorage.setItem("notes", JSON.stringify(notes));
   }
 });
